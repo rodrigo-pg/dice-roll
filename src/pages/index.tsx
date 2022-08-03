@@ -16,10 +16,10 @@ const Home: NextPage = () => {
   const toast = useToast();
 
   function playDice() {
-    const number = Math.floor(Math.random() * (7 - 1) + 1);
+    const number = lcg();
     toast({
       title: 'Dado sorteado',
-      description: `você tirou o número ${number}`,
+      description: `você tirou o número ${number !== 0 ? number : 2}`,
       status: 'success',
       duration: 1000,
       position: "top-right",
@@ -28,10 +28,10 @@ const Home: NextPage = () => {
     setCurrentSide(number);
   }
 
-  function lgc() {
+  function lcg() {
     const m = 7;
     const a = 3;
-    const c = 2;
+    const c = 3;
     return ((currentSide * a) + c) % m;
   }
 
@@ -85,7 +85,7 @@ const Home: NextPage = () => {
       onClick={playDice}
       p={5}
       >
-        Jogar !
+        Jogar
       </Button>
     </Flex>
   )

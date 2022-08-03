@@ -1,4 +1,3 @@
-import { Button } from '@chakra-ui/react';
 import { useFrame, useLoader } from '@react-three/fiber';
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
@@ -34,8 +33,8 @@ const Dice:React.FC<DiceTypes> = ({
         setCurrentSide(diceFace);
     }, [diceFace])
 
-    useFrame((state, delta) => {
-        const sidePosition = sides.get(currentSide);
+    useFrame(() => {
+        const sidePosition = currentSide !== 0 ? sides.get(currentSide) : sides.get(2);
         const currentX = mesh.current.rotation.x;
         const currentY = mesh.current.rotation.y;
         const currentZ = mesh.current.rotation.z;
